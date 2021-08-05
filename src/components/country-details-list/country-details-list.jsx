@@ -1,13 +1,15 @@
 import React from 'react';
-import { CountryDetails } from '../country-details/country-details';
+
+import CountryDetails from '../country-details/country-details';
 import './country-details-list.css';
 
 export const CountryDetailsList = props => {
-  /*console.log(props);*/
+  /*console.log(props)*/
+
   return (
-    <div className='card-list'>
+    <div className='country-list'>
       {props.countries.map(country => (
-        <CountryDetails key={country.alpha3Code} country={country} />
+        <CountryDetails country={country} id={country.alpha3Code} />
       ))}
     </div>
   );

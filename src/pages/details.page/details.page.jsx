@@ -3,13 +3,13 @@ import React from 'react';
 import './details.page.css';
 
 import { CountryDetailsList } from '../../components/country-details-list/country-details-list';
+import CountryDetails from '../../components/country-details/country-details';
 
 class DetailsPage extends React.Component {
   constructor() {
     super();
     this.state = {
       countries: [],
-      searchField: '',
     };
   }
 
@@ -22,8 +22,9 @@ class DetailsPage extends React.Component {
   render() {
     const { countries } = this.state;
     console.log(countries);
+
     return (
-      <div className='grid-container'>
+      <div className='details'>
         <CountryDetailsList countries={countries} />
       </div>
     );
