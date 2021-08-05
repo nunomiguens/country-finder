@@ -23,11 +23,14 @@ const MainPage = () => {
       country.name.toLowerCase().includes(searchField.toLowerCase()) &&
       country.region === region
   );
-  //console.log(countries);
+
+  console.log(countries);
+
   return (
     <div className='main'>
       <h1>Country Finder</h1>
-      <div>
+      <h3>Select Region</h3>
+      <div className='main-buttons'>
         <button onClick={() => setRegion('Americas')}>Americas</button>
         <button onClick={() => setRegion('Europe')}>Europe</button>
         <button onClick={() => setRegion('Asia')}>Asia</button>

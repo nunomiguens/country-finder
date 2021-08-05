@@ -5,7 +5,7 @@
   border: 0.1px solid rgb(211, 210, 210);
   border-radius: 5px;
   padding: 25px;
-  cursor: pointer;
+
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
   transform: translateZ(0);
@@ -18,9 +18,56 @@
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  height: 145px;
 }
 
 .card-container:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-container-buttons {
+  display: flex;
+  margin-bottom: 15px;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.button-details {
+  margin-left: 3px;
+  margin-right: 3px;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 7px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 0.1px solid rgb(211, 210, 210);
+}
+
+.button-details:hover {
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.button-favourite {
+  margin-left: 3px;
+  margin-right: 3px;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 7px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 0.1px solid rgb(211, 210, 210);
+}
+
+.button-favourite:hover {
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
