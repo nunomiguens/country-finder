@@ -1,49 +1,53 @@
 import React from 'react';
 import './card.styles.css';
+import { useState, useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
+import allActions from '../../actions/indexActions.js';
 
 import MainDetails from './main.details.component';
+import CardItem from '../card-item/card-item';
 
-class Card extends React.Component {
-  constructor(props) {
-    super(props);
-    //console.log(props);
-    this.state = {
-      isToggleOn: false,
-    };
+const Card = props => {
+  const [isToggleOn, setIsToggleOn] = useState(false);
 
-    this.handleClick = this.handleClick.bind(this);
-  }
+  const dispatch = useDispatch();
 
-  handleClick(e) {
-    console.log(e);
-    this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn,
-    }));
-  }
+  const handleClick = () => {
+    setIsToggleOn(!isToggleOn);
+  };
 
-  render() {
-    return (
-      <div className='card-container'>
-        <img className='flag-img' alt='country' src={this.props.country.flag} />
-        <h2>{this.props.country.name}</h2>
-        <div className='card-container-buttons'>
-          <button className='button-details' onClick={this.handleClick}>
-            See Details
-          </button>
-          <button className='button-favourite'>
-            <i class='fa fa-heart'></i>
-          </button>
-        </div>
-        <div>
-          <p className='listDetails'>
-            {this.state.isToggleOn && (
-              <MainDetails country={this.props.country} />
-            )}
-          </p>
-        </div>
+  return (
+    <div className='card-container'>
+      <img className='flag-img' alt='country' src={props.country.flag} />
+      <h2>{props.country.name}</h2>
+      <div className='card-container-buttons'>
+        <button className='button-details' onClick={handleClick}>
+          See Details
+        </button>
+        <button
+          className='button-favourite'
+          onClick={() =>
+            dispatch(
+              allActions.favoriteActions.addCountry(
+                <CardItem
+                  country={props.country}
+                  key={props.country.alpha3Code}
+                />
+              )
+            )
+          }
+        >
+          <i class='fa fa-heart'></i>
+        </button>
       </div>
-    );
-  }
-}
+      <div>
+        <p className='listDetails'>
+          {isToggleOn && <MainDetails country={props.country} />}
+        </p>
+      </div>
+    </div>
+  );
+};
 
 export default Card;

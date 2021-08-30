@@ -6,6 +6,8 @@ import './main.page.css';
 
 import { CardList } from '../../components/card-list/card-list.component';
 import { SearchBox } from '../../components/search-box/search-box.component';
+import FavouriteIcon from '../../components/heart-icon/heart-icon.component';
+import FavouriteDropdown from '../../components/favourite-dropdown/favourite-dropdown.component';
 
 const MainPage = () => {
   const [countries, setCountries] = useState([]);
@@ -28,10 +30,19 @@ const MainPage = () => {
 
   return (
     <div className='main'>
-      <h1>Country Finder</h1>
-      <h3>Select Region</h3>
+      <div className='header'>
+        <h1>Country Finder</h1>
+
+        <div className='favourite-icon'>
+          <FavouriteIcon />
+        </div>
+        <FavouriteDropdown country={countries} />
+      </div>
+
+      <h2>Select Region</h2>
+
       <div className='main-buttons'>
-        <button onClick={() => setRegion('Americas')}>Americas</button>
+        <button onClick={() => setRegion('Americas')}>America</button>
         <button onClick={() => setRegion('Europe')}>Europe</button>
         <button onClick={() => setRegion('Asia')}>Asia</button>
         <button onClick={() => setRegion('Africa')}>Africa</button>
