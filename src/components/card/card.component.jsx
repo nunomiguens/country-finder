@@ -1,16 +1,15 @@
 import React from 'react';
 import './card.styles.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import allActions from '../../actions/indexActions.js';
 
 import MainDetails from './main.details.component';
-import CardItem from '../card-item/card-item';
 
 const Card = props => {
   const [isToggleOn, setIsToggleOn] = useState(false);
-
+  const country = props.country;
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -28,14 +27,8 @@ const Card = props => {
         <button
           className='button-favourite'
           onClick={() =>
-            dispatch(
-              allActions.favoriteActions.addCountry(
-                <CardItem
-                  country={props.country}
-                  key={props.country.alpha3Code}
-                />
-              )
-            )
+            dispatch(allActions.favoriteActions.addCountry(country)) &&
+            dispatch(allActions.counterActions.increment())
           }
         >
           <i class='fa fa-heart'></i>

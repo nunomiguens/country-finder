@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 import App from './App';
-import Card from './components/card/card.component';
 
 import { createStore } from 'redux';
 import rootReducer from '../src/reducers/indexReducers';

@@ -1,14 +1,12 @@
 import React from 'react';
 import './card-item.css';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import allActions from '../../actions/indexActions.js';
 
 const CardItem = props => {
   const dispatch = useDispatch();
-  const country = props.country.alpha3Code;
-
-  //console.log(country);
+  const country = props.country;
 
   return (
     <div>
@@ -23,7 +21,8 @@ const CardItem = props => {
       </p>
       <button
         onClick={() =>
-          dispatch(allActions.favoriteActions.removeCountry(country))
+          dispatch(allActions.favoriteActions.removeCountry(country)) &&
+          dispatch(allActions.counterActions.decrement())
         }
       >
         <i class='fa fa-trash'></i>
